@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evergreen Realty Philippines - Resident Information Sheet</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  </head>
+  <body>
+    <!-- Login View -->
+    <div id="loginView" class="view active">
+      <div class="login-container">
+        <div class="login-box">
+          <img
+            src="./Evergreen Logo .png"
+            alt="Evergreen Logo"
+            class="login-logo"
+          />
+          <h1 class="login-title">
+            Evergreen Realty Philippines <br />
+            Resident Information
+          </h1>
+          <form id="loginForm">
+            <div class="form-group">
+              <input
+                type="password"
+                class="password-input"
+                id="password"
+                placeholder="Enter password to proceed"
+              />
+            </div>
+            <p id="error" class="error hidden"></p>
+            <button type="submit" class="login-button">Proceed</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form View -->
+    <div id="formView" class="view">
+      <div class="container">
+        <div class="form-actions">
+          <button type="button" id="downloadPDF" class="btn btn-primary">
+            Download PDF
+          </button>
+          <button type="reset" id="resetForm" class="btn btn-secondary">
+            Reset Form
+          </button>
+        </div>
+
+        <div class="form-container" id="printArea">
+          <!-- Header -->
+          <div class="header">
+            <div class="logo-section">
+              <h1>EVERGREEN REALTY</h1>
+              <h2>PHILIPPINES</h2>
+            </div>
+            <div class="title-section">
+              <h2>RESIDENT INFORMATION SHEET</h2>
+            </div>
+            <div class="reference-section">
+              <p id="referenceNumber">Form-F-</p>
+            </div>
+          </div>
+
+          <!-- Occupant Type -->
+          <div class="checkbox-row">
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="owner"
+                name="occupantType"
+                value="Owner"
+              />
+              <label for="owner">Owner</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="tenant"
+                name="occupantType"
+                value="Tenant"
+              />
+              <label for="tenant">Tenant</label>
+            </div>
+            <div class="checkbox-item">
+              <input
+                type="checkbox"
+                id="authorized"
+                name="occupantType"
+                value="Authorized Occupant"
+              />
+              <label for="authorized">Authorized Occupant</label>
+            </div>
+          </div>
+
+          <!-- Note -->
+          <div class="note-container">
+            <p>
+              <span class="note-highlight">Note: (*)</span> are required
+              information. Community-related updates, Statement of Accounts and
+              other official communications shall be sent to the registered
+              mobile numbers and email addresses.
+            </p>
+          </div>
+
+          <!-- Form -->
+          <form id="residentForm">
+            <!-- PERTINENT DATA Section -->
+            <div class="section">
+              <h3 class="section-title">PERTINENT DATA</h3>
+              <table class="form-table">
+                <tr>
+                  <td class="label-cell">
+                    <label for="name">Name*</label
+                    ><small
+                      >(as it appeared on the Deed of Sale/Title for Owners, on
+                      the Lease Contract for Tenants and on Authorization for
+                      Guests)</small
+                    >
+                  </td>
+                  <td><input type="text" id="name" name="name" required /></td>
+                  <td class="label-cell"><label for="tower">Tower*:</label></td>
+                  <td>
+                    <input type="text" id="tower" name="tower" required />
+                  </td>
+                  <td class="label-cell">
+                    <label for="unitNo">Unit No.*:</label>
+                  </td>
+                  <td>
+                    <input type="text" id="unitNo" name="unitNo" required />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-cell">
+                    <label for="representative"
+                      >Name of Authorized Representative*</label
+                    ><small>(Attach SPA / Secretary's Certificate)</small>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id="representative"
+                      name="representative"
+                      required
+                    />
+                  </td>
+                  <td class="label-cell">
+                    <label for="parkingSlot">Parking Slot No/s.*:</label>
+                  </td>
+                  <td colspan="3">
+                    <input
+                      type="text"
+                      id="parkingSlot"
+                      name="parkingSlot"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-cell">
+                    <label for="birthdate">Birthdate (mm/dd/yy):</label>
+                  </td>
+                  <td><input type="date" id="birthdate" name="birthdate" /></td>
+                  <td class="label-cell">
+                    <label for="civilStatus">Civil Status:</label>
+                  </td>
+                  <td>
+                    <input type="text" id="civilStatus" name="civilStatus" />
+                  </td>
+                  <td class="label-cell">
+                    <label for="gender">Gender*:</label>
+                  </td>
+                  <td>
+                    <input type="text" id="gender" name="gender" required />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-cell">
+                    <label for="employer">Employer's Name:</label>
+                  </td>
+                  <td><input type="text" id="employer" name="employer" /></td>
+                  <td class="label-cell">
+                    <label for="nationality">Nationality*:</label>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id="nationality"
+                      name="nationality"
+                      required
+                    />
+                  </td>
+                  <td class="label-cell">
+                    <label for="acrNo">ACR No.* (if foreigner):</label>
+                  </td>
+                  <td><input type="text" id="acrNo" name="acrNo" /></td>
+                </tr>
+                <tr>
+                  <td class="label-cell"></td>
+                  <td></td>
+                  <td class="label-cell">
+                    <label for="profession">Profession:</label>
+                  </td>
+                  <td>
+                    <input type="text" id="profession" name="profession" />
+                  </td>
+                  <td class="label-cell">
+                    <label for="tin">Tax Identification No.*:</label>
+                  </td>
+                  <td><input type="text" id="tin" name="tin" required /></td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- CONTACT DETAILS Section -->
+            <div class="section">
+              <h3 class="section-title">CONTACT DETAILS</h3>
+              <table class="form-table">
+                <tr>
+                  <td class="label-cell">
+                    <label for="mobile1">Mobile Numbers*:</label>
+                  </td>
+                  <td>
+                    <input
+                      type="tel"
+                      id="mobile1"
+                      name="mobile1"
+                      placeholder="1"
+                      required
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="tel"
+                      id="mobile2"
+                      name="mobile2"
+                      placeholder="2"
+                    />
+                  </td>
+                  <td class="label-cell">
+                    <label for="email">E-mail Add*:</label>
+                  </td>
+                  <td>
+                    <input type="email" id="email" name="email" required />
+                  </td>
+                  <td class="label-cell"><label for="phone">Phone:</label></td>
+                  <td><input type="tel" id="phone" name="phone" /></td>
+                </tr>
+                <tr>
+                  <td class="label-cell">
+                    <label for="mailingAddress"
+                      >Mailing / Business Address*:</label
+                    >
+                  </td>
+                  <td colspan="6">
+                    <input
+                      type="text"
+                      id="mailingAddress"
+                      name="mailingAddress"
+                      required
+                    />
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- SPOUSE'S DATA Section -->
+            <div class="section">
+              <h3 class="section-title">
+                SPOUSE'S DATA AND LIST OF DEPENDENTS
+              </h3>
+              <table class="form-table">
+                <tr>
+                  <td>
+                    <div class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        id="mr"
+                        name="spouseSalutation"
+                        value="Mr."
+                      />
+                      <label for="mr">Mr.</label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        id="mrs"
+                        name="spouseSalutation"
+                        value="Mrs."
+                      />
+                      <label for="mrs">Mrs.</label>
+                    </div>
+                  </td>
+                  <td class="label-cell">
+                    <label for="spouseLastName">Last Name:</label>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id="spouseLastName"
+                      name="spouseLastName"
+                    />
+                  </td>
+                  <td class="label-cell">
+                    <label for="spouseFirstName">First Name:</label>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id="spouseFirstName"
+                      name="spouseFirstName"
+                    />
+                  </td>
+                  <td class="label-cell">
+                    <label for="spouseMiddleName">Middle Name:</label>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id="spouseMiddleName"
+                      name="spouseMiddleName"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-cell">
+                    <label for="spouseBirthdate">Birthdate (mm/dd/yy):</label>
+                  </td>
+                  <td>
+                    <input
+                      type="date"
+                      id="spouseBirthdate"
+                      name="spouseBirthdate"
+                    />
+                  </td>
+                  <td class="label-cell">
+                    <label for="spouseProfession">Profession:</label>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id="spouseProfession"
+                      name="spouseProfession"
+                    />
+                  </td>
+                  <td class="label-cell">
+                    <label for="spouseNationality">Nationality:</label>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id="spouseNationality"
+                      name="spouseNationality"
+                    />
+                  </td>
+                  <td class="label-cell">
+                    <label for="spouseAcrNo">ACR No. (if foreigner):</label>
+                  </td>
+                  <td>
+                    <input type="text" id="spouseAcrNo" name="spouseAcrNo" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="label-cell" rowspan="2">Dependents</td>
+                  <td>
+                    1 <input type="text" id="dependent1" name="dependent1" />
+                  </td>
+                  <td>
+                    2 <input type="text" id="dependent2" name="dependent2" />
+                  </td>
+                  <td>
+                    3 <input type="text" id="dependent3" name="dependent3" />
+                  </td>
+                  <td>
+                    4 <input type="text" id="dependent4" name="dependent4" />
+                  </td>
+                  <td>
+                    5 <input type="text" id="dependent5" name="dependent5" />
+                  </td>
+                  <td>
+                    6 <input type="text" id="dependent6" name="dependent6" />
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- CONTRACT DETAILS Section -->
+            <div class="section">
+              <h3 class="section-title">
+                CONTRACT / AUTHORIZATION DETAILS (For Tenants and Guests only)
+              </h3>
+              <table class="form-table">
+                <tr>
+                  <td class="label-cell">
+                    <label for="contractEndDate"
+                      >Contract /Authorization ends on:</label
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="date"
+                      id="contractEndDate"
+                      name="contractEndDate"
+                    />
+                  </td>
+                  <td class="label-cell">(Attach the document)</td>
+                  <td class="label-cell">Parking Slot included:</td>
+                  <td>
+                    <div class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        id="parkingYes"
+                        name="parkingIncluded"
+                        value="Yes"
+                      />
+                      <label for="parkingYes">Yes</label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        id="parkingNo"
+                        name="parkingIncluded"
+                        value="No"
+                      />
+                      <label for="parkingNo">No</label>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- PERSONS STAYING Section -->
+            <div class="section">
+              <h3 class="section-title">PERSONS STAYING IN THE UNIT</h3>
+              <table class="data-table">
+                <tr>
+                  <th>Name*</th>
+                  <th>Gender*</th>
+                  <th>Birthdate</th>
+                  <th>Relation*</th>
+                  <th>Will Need Assistance During Emergencies (Yes or No)*</th>
+                </tr>
+                <tr>
+                  <td><input type="text" name="personName1" /></td>
+                  <td><input type="text" name="personGender1" /></td>
+                  <td><input type="date" name="personBirthdate1" /></td>
+                  <td><input type="text" name="personRelation1" /></td>
+                  <td><input type="text" name="personAssistance1" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="personName2" /></td>
+                  <td><input type="text" name="personGender2" /></td>
+                  <td><input type="date" name="personBirthdate2" /></td>
+                  <td><input type="text" name="personRelation2" /></td>
+                  <td><input type="text" name="personAssistance2" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="personName3" /></td>
+                  <td><input type="text" name="personGender3" /></td>
+                  <td><input type="date" name="personBirthdate3" /></td>
+                  <td><input type="text" name="personRelation3" /></td>
+                  <td><input type="text" name="personAssistance3" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="personName4" /></td>
+                  <td><input type="text" name="personGender4" /></td>
+                  <td><input type="date" name="personBirthdate4" /></td>
+                  <td><input type="text" name="personRelation4" /></td>
+                  <td><input type="text" name="personAssistance4" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="personName5" /></td>
+                  <td><input type="text" name="personGender5" /></td>
+                  <td><input type="date" name="personBirthdate5" /></td>
+                  <td><input type="text" name="personRelation5" /></td>
+                  <td><input type="text" name="personAssistance5" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="personName6" /></td>
+                  <td><input type="text" name="personGender6" /></td>
+                  <td><input type="date" name="personBirthdate6" /></td>
+                  <td><input type="text" name="personRelation6" /></td>
+                  <td><input type="text" name="personAssistance6" /></td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- EMERGENCY CONTACT Section -->
+            <div class="section">
+              <h3 class="section-title">
+                PLEASE NOTIFY IN CASE OF EMERGENCY* (not living in the property)
+              </h3>
+              <table class="data-table">
+                <tr>
+                  <th>Name</th>
+                  <th>Relation</th>
+                  <th>Contact Number</th>
+                </tr>
+                <tr>
+                  <td><input type="text" name="emergencyName1" /></td>
+                  <td><input type="text" name="emergencyRelation1" /></td>
+                  <td><input type="tel" name="emergencyContact1" /></td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="emergencyName2" /></td>
+                  <td><input type="text" name="emergencyRelation2" /></td>
+                  <td><input type="tel" name="emergencyContact2" /></td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- AUTHORIZATION Section -->
+            <div class="section">
+              <h3 class="section-title">
+                AUTHORIZATION TO ACCESS THE UNIT DURING EMERGENCIES
+              </h3>
+              <p class="compact-text">
+                I hereby authorize the Board of the Evergreen Realty Philippines
+                Condominium Corporation, and/or the Evergreen Property
+                Management Corporation, through their authorized personnel, to
+                enter my unit/property, by any means necessary, to prevent the
+                spread of damage to the common areas or other units during an
+                emergency such as fire, flooding or other life-threatening
+                situations.
+              </p>
+              <p class="compact-text">
+                I also hereby give my authorization to have my unit/property
+                accessed by such authorized personnel, three (3) days after a
+                notice was sent to my last known mailing address or to my email
+                address, in the event that there is a situation inside my
+                unit/property that has a potential to compromise the life,
+                safety and health of other building occupants or neighbors.
+              </p>
+              <p class="compact-text">
+                I hold the Board of Directors of the Evergreen Realty
+                Philippines Condominium Corporation and Evergreen Property
+                Management Corporation and their directors, officers, and
+                authorized personnel, free and harmless from any and all loss,
+                claim, injury, damage or liability I may sustain or incur in
+                relation to the access to my unit during emergencies and
+                life-threatening situations.
+              </p>
+
+              <h3 class="section-title">
+                CERTIFICATION and DATA PRIVACY CONSENT
+              </h3>
+              <p class="compact-text">
+                I certify that I am the person named on this form and that the
+                data/information I have provided is true and correct.
+              </p>
+              <p class="compact-text">
+                I hereby give my full consent to Evergreen Realty Philippines to
+                collect, record, organize, store, update, use, consolidate,
+                block, erase or otherwise process information, whether personal,
+                sensitive or privileged, pertaining to myself which will be used
+                for the purpose of identity verification, processing compliance
+                with Evergreen Realty Philippines Condominium Corporation House
+                Rules and Master Deed with Deed of Restriction, sending
+                property-related announcements and notices, billing statements,
+                reminder and demand letters for association dues, water dues,
+                and other assessments, providing relevant product and
+                promotional information, sending surveys or feedback forms for
+                the improvement of property management services, and for other
+                purposes referred to in the Data Privacy Policy of Evergreen
+                Realty Philippines.
+              </p>
+              <p class="compact-text">
+                I certify and warrant that I have secured the consent of those
+                individuals whose personal data I submitted through this Form.
+              </p>
+            </div>
+
+            <!-- Signature Section -->
+            <div class="signature-section">
+              <table class="signature-table">
+                <tr>
+                  <td>
+                    <div class="signature-line"></div>
+                    <p>Owner or Authorized Representative</p>
+                  </td>
+                  <td>
+                    <div class="signature-line"></div>
+                    <p>Owner or Authorized Representative</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>Signature over Printed Name</p>
+                  </td>
+                  <td>
+                    <div class="date-line"></div>
+                    <p>Date</p>
+                  </td>
+                </tr>
+              </table>
+              <p class="distribution">
+                Distribution to (1) Owner (2) Admin Office - Owner's 201 File
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
