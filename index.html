@@ -266,32 +266,20 @@
               </table>
             </div>
 
-            <!-- SPOUSE'S DATA Section -->
+            <!-- SPOUSE'S DATA Section - Updated Structure -->
             <div class="section">
-              <h3 class="section-title">
-                SPOUSE'S DATA AND LIST OF DEPENDENTS
-              </h3>
+              <h3 class="section-title">SPOUSE'S DATA AND LIST OF DEPENDENTS</h3>
               <table class="form-table">
                 <tr>
-                  <td>
+                  <td style="width: 50px;">
                     <div class="checkbox-item">
-                      <input
-                        type="checkbox"
-                        id="mr"
-                        name="spouseSalutation"
-                        value="Mr."
-                      />
+                      <input type="checkbox" id="mr" name="spouseSalutation" value="Mr." />
                       <label for="mr">Mr.</label>
                     </div>
                   </td>
-                  <td>
+                  <td style="width: 50px;">
                     <div class="checkbox-item">
-                      <input
-                        type="checkbox"
-                        id="mrs"
-                        name="spouseSalutation"
-                        value="Mrs."
-                      />
+                      <input type="checkbox" id="mrs" name="spouseSalutation" value="Mrs." />
                       <label for="mrs">Mrs.</label>
                     </div>
                   </td>
@@ -299,73 +287,51 @@
                     <label for="spouseLastName">Last Name:</label>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      id="spouseLastName"
-                      name="spouseLastName"
-                    />
+                    <input type="text" id="spouseLastName" name="spouseLastName" />
                   </td>
                   <td class="label-cell">
                     <label for="spouseFirstName">First Name:</label>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      id="spouseFirstName"
-                      name="spouseFirstName"
-                    />
+                    <input type="text" id="spouseFirstName" name="spouseFirstName" />
                   </td>
                   <td class="label-cell">
                     <label for="spouseMiddleName">Middle Name:</label>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      id="spouseMiddleName"
-                      name="spouseMiddleName"
-                    />
+                    <input type="text" id="spouseMiddleName" name="spouseMiddleName" />
                   </td>
                 </tr>
                 <tr>
-                  <td class="label-cell">
+                  <td class="label-cell" colspan="2">
                     <label for="spouseBirthdate">Birthdate (mm/dd/yy):</label>
                   </td>
-                  <td>
-                    <input
-                      type="date"
-                      id="spouseBirthdate"
-                      name="spouseBirthdate"
-                    />
+                  <td colspan="2">
+                    <input type="date" id="spouseBirthdate" name="spouseBirthdate" />
                   </td>
                   <td class="label-cell">
                     <label for="spouseProfession">Profession:</label>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      id="spouseProfession"
-                      name="spouseProfession"
-                    />
+                    <input type="text" id="spouseProfession" name="spouseProfession" />
                   </td>
                   <td class="label-cell">
                     <label for="spouseNationality">Nationality:</label>
                   </td>
                   <td>
-                    <input
-                      type="text"
-                      id="spouseNationality"
-                      name="spouseNationality"
-                    />
+                    <input type="text" id="spouseNationality" name="spouseNationality" />
                   </td>
-                  <td class="label-cell">
+                </tr>
+                <tr>
+                  <td class="label-cell" colspan="2">
                     <label for="spouseAcrNo">ACR No. (if foreigner):</label>
                   </td>
-                  <td>
+                  <td colspan="6">
                     <input type="text" id="spouseAcrNo" name="spouseAcrNo" />
                   </td>
                 </tr>
                 <tr>
-                  <td class="label-cell" rowspan="2">Dependents</td>
+                  <td class="label-cell" colspan="2">Dependents</td>
                   <td>
                     1 <input type="text" id="dependent1" name="dependent1" />
                   </td>
