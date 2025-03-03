@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Generate PDF with settings that match Avida's style
     const opt = {
-      margin: [5, 5, 5, 5], // Margins similar to Avida form
+      margin: [5, 3, 5, 5], // Margins similar to Avida form
       filename: "EVERGREEN_RESIDENT_INFORMATION.pdf",
       image: { type: "jpeg", quality: 0.98 }, // High quality for clear text
       html2canvas: {
