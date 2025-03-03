@@ -129,7 +129,15 @@
                     <label for="unitNo">Unit No.*:</label>
                   </td>
                   <td>
-                    <input type="text" id="unitNo" name="unitNo" required />
+                    <input 
+                      type="text" 
+                      id="unitNo" 
+                      name="unitNo" 
+                      pattern="[0-9]*" 
+                      inputmode="numeric" 
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                      required 
+                    />
                   </td>
                 </tr>
                 <tr>
@@ -138,7 +146,7 @@
                       >Name of Authorized Representative*</label
                     ><small>(Attach SPA / Secretary's Certificate)</small>
                   </td>
-                  <td>
+                  <td colspan="3">
                     <input
                       type="text"
                       id="representative"
@@ -149,11 +157,14 @@
                   <td class="label-cell">
                     <label for="parkingSlot">Parking Slot No/s.*:</label>
                   </td>
-                  <td colspan="3">
+                  <td colspan="1">
                     <input
                       type="text"
                       id="parkingSlot"
                       name="parkingSlot"
+                      pattern="[0-9,\- ]*"
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9,\- ]/g, '')"
                       required
                     />
                   </td>
@@ -195,7 +206,17 @@
                   <td class="label-cell">
                     <label for="acrNo">ACR No.* (if foreigner):</label>
                   </td>
-                  <td><input type="text" id="acrNo" name="acrNo" /></td>
+                  <td>
+                    <input 
+                      type="text" 
+                      id="acrNo" 
+                      name="acrNo" 
+                      pattern="[0-9\-]*" 
+                      inputmode="numeric" 
+                      oninput="this.value = this.value.replace(/[^0-9\-]/g, '')" 
+                    />
+                  </td>
+                  
                 </tr>
                 <tr>
                   <td class="label-cell"></td>
@@ -352,7 +373,14 @@
                     <label for="spouseAcrNo">ACR No. (if foreigner):</label>
                   </td>
                   <td colspan="6">
-                    <input type="text" id="spouseAcrNo" name="spouseAcrNo" />
+                    <input 
+                      type="text" 
+                      id="spouseAcrNo" 
+                      name="spouseAcrNo" 
+                      pattern="[0-9\-]*" 
+                      inputmode="numeric" 
+                      oninput="this.value = this.value.replace(/[^0-9\-]/g, '')" 
+                    />
                   </td>
                 </tr>
                 <tr>

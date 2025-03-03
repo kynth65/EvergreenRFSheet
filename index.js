@@ -184,15 +184,57 @@ document.addEventListener("DOMContentLoaded", function () {
       cell.style.verticalAlign = "middle";
     });
 
+    // Fix the mobile and email fields layout specifically
+    const contactDetails = printArea.querySelectorAll('.section-title');
+    for (let i = 0; i < contactDetails.length; i++) {
+      if (contactDetails[i].textContent.includes("CONTACT DETAILS")) {
+        const contactTable = contactDetails[i].parentElement.querySelector("table");
+        if (contactTable) {
+          // Target the first row in the contact details table
+          const firstRow = contactTable.querySelector("tr:first-child");
+          if (firstRow) {
+            // Get all cells in the first row
+            const cells = firstRow.querySelectorAll("td");
+            
+            // Check if we have the right structure
+            if (cells.length >= 7) {
+              // Fix width for each cell
+              cells[0].style.width = "15%"; // Mobile Numbers label
+              cells[1].style.width = "15%"; // Mobile 1 input
+              cells[2].style.width = "15%"; // Mobile 2 input
+              cells[3].style.width = "15%"; // Email label
+              cells[4].style.width = "20%"; // Email input
+              cells[5].style.width = "10%"; // Phone label
+              cells[6].style.width = "10%"; // Phone input
+              
+              // Set explicit no-wrap on labels to prevent stacking
+              cells[0].style.whiteSpace = "nowrap";
+              cells[3].style.whiteSpace = "nowrap";
+              cells[5].style.whiteSpace = "nowrap";
+            }
+          }
+        }
+        break;
+      }
+    }
+
     // Apply equal width to label cells and data cells (50/50)
     const labelCells = printArea.querySelectorAll(".label-cell");
     labelCells.forEach((cell) => {
-      cell.style.width = "50%";
-      cell.style.fontWeight = "normal"; // Remove bold from labels
+      // Skip the cells in contact details section which we've already adjusted above
+      const isInContactDetails = cell.closest('table') && 
+                                cell.closest('table').parentElement && 
+                                cell.closest('table').parentElement.querySelector('.section-title') &&
+                                cell.closest('table').parentElement.querySelector('.section-title').textContent.includes("CONTACT DETAILS");
       
-      // If there's a data cell next to this label, make it 50% too
-      if (cell.nextElementSibling && !cell.nextElementSibling.classList.contains("label-cell")) {
-        cell.nextElementSibling.style.width = "50%";
+      if (!isInContactDetails) {
+        cell.style.width = "50%";
+        cell.style.fontWeight = "normal"; // Remove bold from labels
+        
+        // If there's a data cell next to this label, make it 50% too
+        if (cell.nextElementSibling && !cell.nextElementSibling.classList.contains("label-cell")) {
+          cell.nextElementSibling.style.width = "50%";
+        }
       }
     });
 
