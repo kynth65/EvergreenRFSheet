@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM loaded");
 
+  // Make the EVERGREEN REALTY and PHILIPPINES text green in the header
+  const logoSection = document.querySelector(".logo-section");
+  if (logoSection) {
+    const h1 = logoSection.querySelector("h1");
+    const h2 = logoSection.querySelector("h2");
+    if (h1) h1.style.color = "#4CAF50"; // Green color
+    if (h2) h2.style.color = "#4CAF50"; // Green color
+  }
+
   // View Management
   const views = {
     login: document.getElementById("loginView"),
@@ -116,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fix layout issues before generating PDF
     printArea.style.width = "100%";
-    printArea.style.maxWidth = "210mm"; // A4 width
+    printArea.style.maxWidth = "200mm"; // A4 width
     printArea.style.margin = "0";
     printArea.style.padding = "0";
 
@@ -125,6 +134,15 @@ document.addEventListener("DOMContentLoaded", function () {
     printArea.style.lineHeight = "1.2";
     printArea.style.fontFamily = "Arial, sans-serif";
     printArea.style.border = "1px solid #000";
+
+    // Set EVERGREEN REALTY and PHILIPPINES to green in the PDF
+    const headerSection = printArea.querySelector(".logo-section");
+    if (headerSection) {
+      const h1 = headerSection.querySelector("h1");
+      const h2 = headerSection.querySelector("h2");
+      if (h1) h1.style.color = "#4CAF50"; // Green color for PDF
+      if (h2) h2.style.color = "#4CAF50"; // Green color for PDF
+    }
 
     // Add border around the whole form
     printArea.style.borderWidth = "1px";

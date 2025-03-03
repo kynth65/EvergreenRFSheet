@@ -209,7 +209,17 @@
                   <td class="label-cell">
                     <label for="tin">Tax Identification No.*:</label>
                   </td>
-                  <td><input type="text" id="tin" name="tin" required /></td>
+                  <td>
+                    <input 
+                      type="text" 
+                      id="tin" 
+                      name="tin" 
+                      pattern="[0-9]*" 
+                      inputmode="numeric" 
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                      required 
+                    />
+                  </td>
                 </tr>
               </table>
             </div>
@@ -227,6 +237,9 @@
                       type="tel"
                       id="mobile1"
                       name="mobile1"
+                      pattern="[0-9]*"
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                       placeholder="1"
                       required
                     />
@@ -236,6 +249,9 @@
                       type="tel"
                       id="mobile2"
                       name="mobile2"
+                      pattern="[0-9]*"
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                       placeholder="2"
                     />
                   </td>
@@ -246,7 +262,16 @@
                     <input type="email" id="email" name="email" required />
                   </td>
                   <td class="label-cell"><label for="phone">Phone:</label></td>
-                  <td><input type="tel" id="phone" name="phone" /></td>
+                  <td>
+                    <input 
+                      type="tel" 
+                      id="phone" 
+                      name="phone" 
+                      pattern="[0-9]*" 
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    />
+                  </td>
                 </tr>
                 <tr>
                   <td class="label-cell">
@@ -471,12 +496,28 @@
                 <tr>
                   <td><input type="text" name="emergencyName1" /></td>
                   <td><input type="text" name="emergencyRelation1" /></td>
-                  <td><input type="tel" name="emergencyContact1" /></td>
+                  <td>
+                    <input 
+                      type="tel" 
+                      name="emergencyContact1" 
+                      pattern="[0-9]*" 
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    />
+                  </td>
                 </tr>
                 <tr>
                   <td><input type="text" name="emergencyName2" /></td>
                   <td><input type="text" name="emergencyRelation2" /></td>
-                  <td><input type="tel" name="emergencyContact2" /></td>
+                  <td>
+                    <input 
+                      type="tel" 
+                      name="emergencyContact2" 
+                      pattern="[0-9]*" 
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    />
+                  </td>
                 </tr>
               </table>
             </div>
